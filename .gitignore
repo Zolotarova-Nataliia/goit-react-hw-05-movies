@@ -5,6 +5,13 @@
 .vscode/
 .idea/
 
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+build
+.vscode
+.husky
+6
+
 # dependencies
 /node_modules
 /.pnp
