@@ -21,6 +21,6 @@ export function fetchMovieById(movieId) {
 
 export function fetchMovieByQuery(searchQuery) {
   return fetchMovies(
-    `${BASE_URL}search/movie/?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1&include_adult=false`
+    `${BASE_URL}search/movie?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=1&include_adult=false`
   );
 }
