@@ -1,26 +1,32 @@
+import { CardWrap, CardImg, CardTitle } from './MovieCard.styled';
 import { Link, useLocation } from 'react-router-dom';
+import { CardImgWrap } from './MovieCard.styled';
 const imgUrl = 'https://image.tmdb.org/t/p/w400';
-const sorryPoster = '../../../public/sorry-poster.jpg';
 
 const MovieCard = ({ movie }) => {
   const location = useLocation();
   return (
-    <div>
+    <CardWrap>
       <Link
         to={{
           pathname: `/movies/${movie.id}`,
           state: { from: location },
         }}
       >
-        <img
-          src={
-            movie.poster_path ? `${imgUrl}${movie.poster_path}` : sorryPoster
-          }
-          alt={movie.title}
-        />
-        <h2> {movie.original_title}</h2>
+        <CardImgWrap>
+          <CardImg
+            src={
+              movie.poster_path
+                ? `${imgUrl}${movie.poster_path}`
+                : `${process.env.PUBLIC_URL}/sorry-poster.jpg`
+            }
+            alt={movie.title}
+          />
+        </CardImgWrap>
+
+        <CardTitle> {movie.original_title}</CardTitle>
       </Link>
-    </div>
+    </CardWrap>
   );
 };
 

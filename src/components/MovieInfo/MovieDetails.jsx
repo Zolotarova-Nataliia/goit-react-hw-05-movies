@@ -1,24 +1,27 @@
+import { MovieDetailsLink } from 'pages/MovieDetailsPage/MovieDetails.styled';
+import { MovieDetailsTitle } from 'pages/MovieDetailsPage/MovieDetails.styled';
 import { Outlet } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { MovieDetailsList, MovieDetailsWrapper } from './MovieDetails.styled';
 
 export default function MovieDetails() {
   const location = useLocation();
   return (
-    <>
-      <ul>
+    <MovieDetailsWrapper>
+      <MovieDetailsTitle>Additional information</MovieDetailsTitle>
+      <MovieDetailsList>
         <li>
-          <NavLink to="cast" state={{ from: location }}>
+          <MovieDetailsLink to="cast" state={{ from: location }}>
             Cast
-          </NavLink>
+          </MovieDetailsLink>
         </li>
         <li>
-          <NavLink to="reviews" state={{ from: location }}>
+          <MovieDetailsLink to="reviews" state={{ from: location }}>
             Reviews
-          </NavLink>
+          </MovieDetailsLink>
         </li>
-      </ul>
+      </MovieDetailsList>
       <Outlet />
-    </>
+    </MovieDetailsWrapper>
   );
 }

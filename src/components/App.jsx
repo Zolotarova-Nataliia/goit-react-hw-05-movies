@@ -1,6 +1,7 @@
 import { ToastContainer } from 'react-toastify';
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Spinner from 'react-spinkit';
 import Navigation from './Navigation/Navigation';
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
 const HomePage = lazy(() => import('pages/Homepage/HomePage'));
@@ -12,7 +13,9 @@ export const App = () => {
     <>
       <ToastContainer />
       <Navigation />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={<Spinner name="ball-spin-fade-loader" color="#000000" />}
+      >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />

@@ -1,15 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { HiOutlineFilm } from 'react-icons/hi';
+import { Header, Nav, Link, FilmSvg } from './Navigation.styled';
 export default function Navigation() {
   return (
-    <header className="">
-      <nav>
-        <NavLink to="/" className="">
-          Home
-        </NavLink>
-        <NavLink to="/movies" className="">
-          Movies
-        </NavLink>
-      </nav>
-    </header>
+    <Header>
+      <Nav>
+        <Link to="/">Home</Link>
+        <FilmSvg>
+          <HiOutlineFilm />
+        </FilmSvg>
+
+        <Link to="/movies">Movies</Link>
+      </Nav>
+    </Header>
   );
 }

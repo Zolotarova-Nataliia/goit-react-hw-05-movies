@@ -1,8 +1,16 @@
+import {
+  MovieWrap,
+  MovieInfoWrap,
+  MovieInfoTitle,
+  MovieInfoSubTitle,
+  MovieInfoSpan,
+  MovieInfoList,
+} from './MovieInfo.styled';
 const imgUrl = 'https://image.tmdb.org/t/p/w400';
 
 export default function MovieInfo({ movie }) {
   return (
-    <div>
+    <MovieWrap>
       <img
         src={
           movie.poster_path
@@ -11,24 +19,25 @@ export default function MovieInfo({ movie }) {
         }
         alt={movie.title}
       />
-      <h2>
-        {movie.original_title}
-        <span>({movie.release_date.slice(0, 4)})</span>
-      </h2>
-      <p>
-        User score:
-        <span>{movie.vote_average * 10} %</span>
-      </p>
-      <p>Overview </p>
-      <p>{movie.overview}</p>
-      <div>
-        <span>Genres:</span>
-        <ul>
-          {movie.genres.map(genre => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
+      <MovieInfoWrap>
+        <MovieInfoTitle>
+          {movie.original_title}
+          <MovieInfoSpan>({movie.release_date.slice(0, 4)})</MovieInfoSpan>
+        </MovieInfoTitle>
+        <MovieInfoSubTitle>User score:</MovieInfoSubTitle>
+        <MovieInfoSpan>{movie.vote_average * 10} %</MovieInfoSpan>
+        <MovieInfoSubTitle>Overview:</MovieInfoSubTitle>
+        <MovieInfoSpan>{movie.overview}</MovieInfoSpan>
+
+        <div>
+          <MovieInfoSubTitle>Genres:</MovieInfoSubTitle>
+          <MovieInfoList>
+            {movie.genres.map(genre => (
+              <li key={genre.id}>{genre.name}</li>
+            ))}
+          </MovieInfoList>
+        </div>
+      </MovieInfoWrap>
+    </MovieWrap>
   );
 }

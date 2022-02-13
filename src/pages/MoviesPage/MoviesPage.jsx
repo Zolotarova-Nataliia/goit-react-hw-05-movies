@@ -1,7 +1,15 @@
-import MoviesList from 'components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
+import { BsSearch } from 'react-icons/bs';
 import * as movieApi from '../../services/movies-api';
+import MoviesList from 'components/MoviesList/MoviesList';
+import {
+  SearchForm,
+  SearchBtn,
+  SearchInput,
+  SearchWrap,
+} from './MoviesPage.styled';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState(null);
@@ -25,20 +33,22 @@ export default function MoviesPage() {
   };
   return (
     <>
-      <form onSubmit={onFormSubmit}>
-        <label>
-          <input
+      <SearchWrap>
+        <SearchForm onSubmit={onFormSubmit}>
+          <SearchInput
             type="text"
             name="query"
             autoComplete="off"
             autoFocus
             placeholder="Search your film"
             defaultValue={query}
-          ></input>
-          <button type="submit"></button>
-        </label>
-      </form>
-      {movies && <MoviesList movies={movies} />}
+          ></SearchInput>
+          <SearchBtn type="submit">
+            <BsSearch />
+          </SearchBtn>
+        </SearchForm>
+      </SearchWrap>
+      <SearchWrap>{movies && <MoviesList movies={movies} />}</SearchWrap>
     </>
   );
 }

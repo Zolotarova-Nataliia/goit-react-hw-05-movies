@@ -1,14 +1,15 @@
 import MovieCard from 'components/MovieCard/MovieCard';
+import { StyledMoviesList, StyledMoviesEl } from './MoviesList.styled';
 
 const MoviesList = ({ movies }) => {
   return (
-    <ul>
+    <StyledMoviesList>
       {movies.results.map(movie => (
-        <li key={movie.id}>
+        <StyledMoviesEl key={movie.id}>
           <MovieCard movie={movie} />
-        </li>
+        </StyledMoviesEl>
       ))}
-    </ul>
+    </StyledMoviesList>
   );
 };
 
